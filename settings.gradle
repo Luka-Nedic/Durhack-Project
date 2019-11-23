@@ -1,0 +1,2 @@
+include ':deskop'
+include 'android', 'core'
