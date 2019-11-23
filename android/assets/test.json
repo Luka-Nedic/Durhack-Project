@@ -1,0 +1,19 @@
+{
+  "scenes" : [
+    {
+      "name": "game",
+      "layers" : [
+        {
+          "zindex" : 1,
+          "sprites" : [
+            {
+              "name": "player",
+              "imageName": "bad",
+              "actions": ["Fade", "Physics", "Shake"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

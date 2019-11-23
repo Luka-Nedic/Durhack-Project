@@ -1,0 +1,19 @@
+{
+  "actions" : [
+    {
+        "type" : "Physics",
+        "gravity" : "0.5",
+        "gravityOn" : "true",
+        "name" : "Physics"
+    }, {
+      "type" : "Shake",
+      "name" : "Shake"
+    } , {
+      "type" : "Move",
+      "name" : "Move"
+    } , {
+      "type" : "Fade",
+      "name" : "Fade"
+    }
+  ]
+}

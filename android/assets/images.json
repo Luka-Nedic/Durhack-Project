@@ -1,0 +1,9 @@
+{
+  "images" : [
+    {
+      "image" : "badlogic.jpg",
+      "name" : "bad",
+      "scale" : "0.8f"
+    }
+  ]
+}
