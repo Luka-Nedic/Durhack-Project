@@ -1,6 +1,8 @@
-package com.lukategames.game.api;
+package com.lukategames.game.api.actions;
 
-public class Move {
+import com.lukategames.game.api.Sprite;
+
+public class Move extends Action {
 
     private float initialXPosition;
     private float finalXPosition;
@@ -44,8 +46,16 @@ public class Move {
     public float getXPosition() {
         return currentXposition;
     }
+
     public float getYPosition() {
         return currentYposition;
     }
 
+    @Override
+    public void update(Sprite sprite) {
+        if(moving) {
+            update();
+            sprite.setPosition(getXPosition(), getYPosition());
+        }
+    }
 }

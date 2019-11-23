@@ -1,6 +1,8 @@
-package com.lukategames.game.api;
+package com.lukategames.game.api.actions;
 
-public class Shake {
+import com.lukategames.game.api.Sprite;
+
+public class Shake extends Action {
 
     private float initialPosition;
     private float currentPosition;
@@ -13,26 +15,24 @@ public class Shake {
     private boolean shaking;
 
     public void update() {
-        if(shaking) {
-
-            if (counter % 2 == 1) {
-                currentPosition += -shakeSpeed;
-            }
-            else {
-                currentPosition += shakeSpeed;
-            }
-            cmove += 1;
-
-            if(cmove >= move) {
-             cmove = 0;
-             counter += 1;
-            }
-
-            if(counter >= shakeAmount) {
-                currentPosition = initialPosition;
-                shaking = false;
-            }
+        if (counter % 2 == 1) {
+            currentPosition += -shakeSpeed;
         }
+        else {
+            currentPosition += shakeSpeed;
+        }
+        cmove += 1;
+
+        if(cmove >= move) {
+            cmove = 0;
+            counter += 1;
+        }
+
+        if(counter >= shakeAmount) {
+            currentPosition = initialPosition;
+            shaking = false;
+        }
+
     }
 
     public void shake(float initialPosition, float shakeLength, float shakeSpeed, float shakeAmount) {
@@ -52,4 +52,11 @@ public class Shake {
         return currentPosition;
     }
 
+    @Override
+    public void update(Sprite sprite) {
+        if(shaking) {
+            update();
+            sprite.setPosition(getPosition(), sprite.getY());
+        }
+    }
 }

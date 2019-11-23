@@ -1,4 +1,4 @@
-package com.lukategames.game.api;
+package com.lukategames.game.api.interfaces;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 

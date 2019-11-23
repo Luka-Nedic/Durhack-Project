@@ -1,13 +1,16 @@
 package com.lukategames.game.api;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.lukategames.game.api.interfaces.Drawable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Layer implements Drawable {
 
     private int opacity;
-    private ArrayList<Sprite> sprites = new ArrayList<Sprite>();
+    private HashMap<String, Sprite> sprites = new HashMap<>();
+
 
     public Layer() {
         this.opacity = 100;
@@ -15,12 +18,13 @@ public class Layer implements Drawable {
 
     @Override
     public void draw(SpriteBatch batch) {
-        for(int i = 0; i < sprites.size(); i++) {
-            sprites.get(i).draw(batch);
+        for(Sprite sprite : sprites.values()) {
+            sprite.draw(batch);
         }
     }
 
-    public void addSprite(Sprite sprite) {
-        this.sprites.add(sprite);
+    public void addSprite(String name, Sprite sprite) {
+        this.sprites.put(name, sprite);
     }
+
 }

@@ -1,4 +1,4 @@
-package com.lukategames.game.api;
+package com.lukategames.game.api.texture;
 
 import com.badlogic.gdx.graphics.Texture;
 
@@ -9,11 +9,6 @@ public class Image extends Texture {
     public Image(String internalPath, float scale) {
         super(internalPath);
         this.scale = scale;
-    }
-
-    public Image(String internalPath) {
-        super(internalPath);
-        this.scale = 1.0f;
     }
 
     public float getScale() {

@@ -1,22 +1,22 @@
 package com.lukategames.game.api;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.lukategames.game.api.interfaces.Drawable;
 
-import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class Scene implements Drawable {
 
-    private ArrayList<Layer> layers = new ArrayList<Layer>();
+    private TreeMap<Integer, Layer> layers = new TreeMap<>();
 
     @Override
     public void draw(SpriteBatch batch) {
-        for(int i = 0; i < layers.size(); i++) {
-            layers.get(i).draw(batch);
+        for(Layer layer : layers.values()) {
+            layer.draw(batch);
         }
     }
 
-    public void addLayer(Layer layer) {
-        this.layers.add(layer);
+    public void addLayer(int i, Layer layer) {
+        this.layers.put(i, layer);
     }
-
 }

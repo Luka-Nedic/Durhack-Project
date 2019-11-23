@@ -1,6 +1,7 @@
 package com.lukategames.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.InputProcessor;
 import com.lukategames.game.api.Game;
 
 
