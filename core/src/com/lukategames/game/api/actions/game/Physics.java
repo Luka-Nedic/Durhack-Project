@@ -1,6 +1,7 @@
-package com.lukategames.game.api.actions;
+package com.lukategames.game.api.actions.game;
 
-import com.lukategames.game.api.Sprite;
+import com.lukategames.game.api.actions.Action;
+import com.lukategames.game.api.components.Sprite;
 
 public class Physics extends Action {
 
@@ -26,18 +27,27 @@ public class Physics extends Action {
             accelerationY -= gravity;
         if(impulse) {
             accelerationY += deimpulseY;
+            accelerationX += deimpulseX;
 
             if(Math.abs(accelerationY-targetAccelerationY) <= deimpulseY)
                 deimpulseY = 0;
 
             if(Math.abs(accelerationX-targetAccelerationX) <= deimpulseX)
                 deimpulseX = 0;
-            accelerationX += deimpulseX;
+
 
             if(deimpulseX == 0 && deimpulseY == 0)
                 impulse = false;
         }
         sprite.setPosition(sprite.getX()+accelerationX, sprite.getY()+accelerationY);
+    }
+
+    public void impulse(float accelerationX, float targetAccelerationX, float deimpulseX) {
+        this.accelerationX = accelerationX;
+        this.targetAccelerationX = targetAccelerationX;
+        this.deimpulseX = deimpulseX;
+        this.deimpulseY = 0;
+        this.impulse = true;
     }
 
     public void impulse(float accelerationX, float accelerationY, float targetAccelerationX, float targetAccelerationY, float deimpulseX, float deimpulseY) {

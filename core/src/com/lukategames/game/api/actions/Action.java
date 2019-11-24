@@ -1,6 +1,6 @@
 package com.lukategames.game.api.actions;
 
-import com.lukategames.game.api.Sprite;
+import com.lukategames.game.api.components.Sprite;
 
 public abstract class Action {
 

@@ -1,4 +1,4 @@
-package com.lukategames.game.api;
+package com.lukategames.game.api.components;
 
 import com.lukategames.game.api.interfaces.Init;
 

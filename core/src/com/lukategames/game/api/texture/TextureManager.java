@@ -1,6 +1,7 @@
 package com.lukategames.game.api.texture;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -10,7 +11,8 @@ public class TextureManager {
 
     public static HashMap<String, Image> images = new HashMap<String, Image>();
 
-    public TextureManager(Gson gson, String fileName) {
+    public static void load(Gson gson, String fileName) {
+
         try {
             FileReader reader = new FileReader(fileName);
             TextureList list = gson.fromJson(reader, TextureList.class);

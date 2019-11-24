@@ -1,14 +1,15 @@
-package com.lukategames.game.api;
+package com.lukategames.game.api.components;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.lukategames.game.api.Constants;
 import com.lukategames.game.api.actions.Action;
 import com.lukategames.game.api.actions.ActionManager;
-import com.lukategames.game.api.actions.Physics;
 import com.lukategames.game.api.interfaces.Drawable;
 import com.lukategames.game.api.texture.Image;
 import com.lukategames.game.api.texture.TextureManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Sprite extends com.badlogic.gdx.graphics.g2d.Sprite implements Drawable {
@@ -20,8 +21,7 @@ public class Sprite extends com.badlogic.gdx.graphics.g2d.Sprite implements Draw
     private float scaledHeight;
     private float x;
     private float y;
-    private ArrayList<Action> actions = new ArrayList<Action>();
-    private Physics physics;
+    private HashMap<String, Action> actions = new HashMap<>();
 
     public Sprite(Image image) {
         super(image);
@@ -36,6 +36,21 @@ public class Sprite extends com.badlogic.gdx.graphics.g2d.Sprite implements Draw
         this.scaledHeight = width*scale;
 
         setPosition(0,0);
+    }
+
+    public Sprite(Image image, float x, float y) {
+        super(image);
+
+        scale = Constants.RATIO*image.getScale();
+        setScale(scale);
+
+        this.width = getWidth();
+        this.height = getHeight();
+
+        this.scaledWidth = width*scale;
+        this.scaledHeight = height*scale;
+
+        setPosition(x,y);
     }
 
     public void setPosition(float x, float y) {
@@ -53,7 +68,7 @@ public class Sprite extends com.badlogic.gdx.graphics.g2d.Sprite implements Draw
     @Override
     public void draw(SpriteBatch batch) {
         super.draw(batch);
-        for(Action action : actions) {
+        for(Action action : actions.values()) {
             action.update(this);
         }
     }
@@ -68,7 +83,12 @@ public class Sprite extends com.badlogic.gdx.graphics.g2d.Sprite implements Draw
         return y;
     }
 
+
     public void addAction(String action) {
-        actions.add(ActionManager.actions.get(action));
+        actions.put(action, ActionManager.getAction(action));
+    }
+
+    public Action getAction(String action) {
+        return actions.get(action);
     }
 }

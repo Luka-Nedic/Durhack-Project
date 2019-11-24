@@ -1,6 +1,7 @@
-package com.lukategames.game.api.actions;
+package com.lukategames.game.api.actions.game;
 
-import com.lukategames.game.api.Sprite;
+import com.lukategames.game.api.actions.Action;
+import com.lukategames.game.api.components.Sprite;
 
 public class Move extends Action {
 
@@ -33,10 +34,10 @@ public class Move extends Action {
         this.finalXPosition = finalXPosition;
         this.finalYPosition = finalYPosition;
         this.currentYposition = initialYPosition;
-        this.currentXposition = initialYPosition;
+        this.currentXposition = initialXPosition;
         this.moveSpeed = moveSpeed;
         moving = true;
-        if(initialYPosition != finalYPosition && initialXPosition != initialYPosition) {
+        if(initialYPosition != finalYPosition && initialXPosition != finalXPosition) {
             this.gradient = (finalYPosition - initialYPosition)/(finalXPosition - initialXPosition);
         } else {
             this.gradient = 1;

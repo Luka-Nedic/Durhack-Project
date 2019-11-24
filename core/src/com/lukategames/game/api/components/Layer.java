@@ -1,9 +1,8 @@
-package com.lukategames.game.api;
+package com.lukategames.game.api.components;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.lukategames.game.api.interfaces.Drawable;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Layer implements Drawable {
@@ -27,4 +26,15 @@ public class Layer implements Drawable {
         this.sprites.put(name, sprite);
     }
 
+    public boolean containsSprite(String name) {
+        return sprites.containsKey(name);
+    }
+
+    public Sprite getSprite(String name) {
+        return sprites.get(name);
+    }
+
+    public HashMap<String, Sprite> getSprites() {
+        return sprites;
+    }
 }

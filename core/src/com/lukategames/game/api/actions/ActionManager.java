@@ -6,6 +6,10 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
+import com.lukategames.game.api.actions.game.FadeInit;
+import com.lukategames.game.api.actions.game.MoveInit;
+import com.lukategames.game.api.actions.game.PhysicsInit;
+import com.lukategames.game.api.actions.game.ShakeInit;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -14,9 +18,9 @@ import java.util.HashMap;
 
 public class ActionManager {
 
-    public static HashMap<String, Action> actions = new HashMap<>();
+    public static HashMap<String, ActionInit> actions = new HashMap<>();
 
-    public ActionManager(String fileName) {
+    public static void load(String fileName) {
         try {
             FileReader reader = new FileReader(fileName);
 
@@ -25,7 +29,7 @@ public class ActionManager {
             ActionList list = gson.fromJson(reader, ActionList.class);
 
             for(ActionInit actionInit:  list.actions) {
-               actions.put(actionInit.getName(), actionInit.getObject());
+                actions.put(actionInit.getName(), actionInit);
             }
 
         } catch (FileNotFoundException e) {
@@ -33,11 +37,15 @@ public class ActionManager {
         }
     }
 
+    public static Action getAction(String name) {
+        return actions.get(name).getObject();
+    }
+
     private class ActionList {
         private ActionInit[] actions;
     }
 
-    private class ActionJsonDeserializer implements JsonDeserializer<ActionInit> {
+    private static class ActionJsonDeserializer implements JsonDeserializer<ActionInit> {
         @Override
         public ActionInit deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             String type = json.getAsJsonObject().get("type").getAsString();
