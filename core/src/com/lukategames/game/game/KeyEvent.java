@@ -9,7 +9,7 @@ public class KeyEvent extends Event<Integer> {
     @Override
     public void handleEvent(Scene scene) {
         Sprite player = scene.getSprite("player");
-        System.out.println(data);
+
         if(data == 21) {
             ((Physics) player.getAction("Physics")).impulse(-5, 0, 0.05f );
         } else if(data == 22) {

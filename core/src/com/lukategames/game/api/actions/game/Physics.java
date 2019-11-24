@@ -46,7 +46,6 @@ public class Physics extends Action {
         this.accelerationX = accelerationX;
         this.targetAccelerationX = targetAccelerationX;
         this.deimpulseX = deimpulseX;
-        this.deimpulseY = 0;
         this.impulse = true;
     }
 

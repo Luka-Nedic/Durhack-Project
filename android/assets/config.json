@@ -1,0 +1,9 @@
+{
+  "width" : 640,
+  "height" : 940,
+  "scenePath" : "test.json",
+  "imagePath" : "images.json",
+  "actionPath" : "actions.json",
+  "background" : "background",
+  "activeScene" : "home"
+}

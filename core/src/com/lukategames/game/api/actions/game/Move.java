@@ -22,25 +22,27 @@ public class Move extends Action {
             if(initialXPosition != finalXPosition)
                 currentXposition += moveSpeed * gradient;
 
-            if(finalXPosition == currentXposition && finalYPosition == currentYposition) {
+            if(Math.abs(finalXPosition - currentXposition) < 2 && Math.abs(finalYPosition - currentYposition) < 2) {
                 moving = false;
             }
         }
     }
 
     public void move(float initialXPosition, float initialYPosition, float finalXPosition, float finalYPosition, float moveSpeed) {
-        this.initialXPosition = initialXPosition;
-        this.initialYPosition = initialYPosition;
-        this.finalXPosition = finalXPosition;
-        this.finalYPosition = finalYPosition;
-        this.currentYposition = initialYPosition;
-        this.currentXposition = initialXPosition;
-        this.moveSpeed = moveSpeed;
-        moving = true;
-        if(initialYPosition != finalYPosition && initialXPosition != finalXPosition) {
-            this.gradient = (finalYPosition - initialYPosition)/(finalXPosition - initialXPosition);
-        } else {
-            this.gradient = 1;
+        if(!moving) {
+            this.initialXPosition = initialXPosition;
+            this.initialYPosition = initialYPosition;
+            this.finalXPosition = finalXPosition;
+            this.finalYPosition = finalYPosition;
+            this.currentYposition = initialYPosition;
+            this.currentXposition = initialXPosition;
+            this.moveSpeed = moveSpeed;
+            moving = true;
+            if (initialYPosition != finalYPosition && initialXPosition != finalXPosition) {
+                this.gradient = (finalYPosition - initialYPosition) / (finalXPosition - initialXPosition);
+            } else {
+                this.gradient = 1;
+            }
         }
     }
 

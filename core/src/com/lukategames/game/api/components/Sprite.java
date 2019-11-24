@@ -91,4 +91,8 @@ public class Sprite extends com.badlogic.gdx.graphics.g2d.Sprite implements Draw
     public Action getAction(String action) {
         return actions.get(action);
     }
+
+    public float getOpacity() {
+        return this.getColor().a;
+    }
 }

@@ -2,17 +2,99 @@
   "scenes" : [
     {
       "name": "game",
-      "layers" : [
+      "triggers": ["bounce", "switch", "spawn", "death","ghome"],
+      "mouseEvent": "mouse",
+      "keyEvent": "key",
+      "layers" : [ {
+        "zindex" : 0,
+        "sprites" : [
+          {
+            "name": "tile1",
+            "imageName": "path",
+            "actions": ["Move"],
+            "x" : -200,
+             "y" : -200
+          } , {
+            "name": "tile2",
+            "imageName": "path",
+            "actions": [ "Move"],
+            "x" : -50,
+            "y" : -100
+          }, {
+            "name": "tile3",
+            "imageName": "path",
+            "actions": ["Move"],
+            "x" : 55,
+            "y" : 80
+          }, {
+            "name": "tile4",
+            "imageName": "path",
+            "actions": ["Move"],
+            "x" : 200,
+            "y" : 140
+          } , {
+            "name": "tile5",
+            "imageName": "path",
+            "actions": ["Move"],
+            "x" : -200,
+            "y" : 450
+          }, {
+            "name": "tile6",
+            "imageName": "path",
+            "actions": ["Move"],
+            "x" : 0,
+            "y" : 300
+          }
+        ]
+      },
         {
           "zindex" : 1,
           "sprites" : [
             {
               "name": "player",
-              "imageName": "bad",
-              "actions": ["Fade", "Physics", "Shake"]
+              "imageName": "doodle",
+              "actions": ["Fade", "Physics", "Move"]
             }
           ]
         }
+      ]
+    }, {
+      "name": "home",
+      "triggers": ["jump"],
+      "mouseEvent": "mousehome",
+      "layers" : [ {
+        "zindex" : 0,
+        "sprites" : [
+          {
+            "name": "background",
+            "x" : 0,
+            "y":  0,
+            "imageName": "home"
+          }
+        ]
+      }, {
+          "zindex" : 2,
+          "sprites" : [
+            {
+              "name": "player",
+              "imageName": "doodle",
+              "x" : -200,
+              "y":  -200,
+              "actions": ["Fade", "Physics", "Shake"]
+            }
+          ]
+        }, {
+        "zindex" : 3,
+        "sprites" : [
+          {
+            "name": "play",
+            "imageName": "play",
+            "x" : -50,
+            "y": 70,
+            "actions": ["Shake"]
+          }
+        ]
+      }
       ]
     }
   ]

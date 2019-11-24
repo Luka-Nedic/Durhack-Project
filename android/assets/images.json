@@ -4,6 +4,26 @@
       "image" : "badlogic.jpg",
       "name" : "bad",
       "scale" : "0.8f"
+    }, {
+      "image" : "background.png",
+      "name" : "background",
+      "scale" : "1f"
+    }, {
+      "image" : "doodle.png",
+      "name" : "doodle",
+      "scale" : "1f"
+    }, {
+      "image" : "path.png",
+      "name" : "path",
+      "scale" : "1f"
+    }, {
+      "image" : "home.png",
+      "name" : "home",
+      "scale" : "1f"
+    }, {
+      "image" : "play.png",
+      "name" : "play",
+      "scale" : "1f"
     }
   ]
 }
